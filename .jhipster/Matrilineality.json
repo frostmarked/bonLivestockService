@@ -1,0 +1,87 @@
+{
+  "name": "Matrilineality",
+  "fields": [
+    {
+      "fieldName": "familyname",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "127"
+    },
+    {
+      "fieldName": "earTagId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "required", "unique"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "127"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesMaxlength": "6"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1023"
+    },
+    {
+      "fieldName": "cattleNameRegexPattern",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "patriId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "patriName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "127"
+    },
+    {
+      "fieldName": "patriCountry",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesMaxlength": "6"
+    },
+    {
+      "fieldName": "polled",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "storyHandle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "visibility",
+      "fieldType": "UserRole",
+      "fieldValues": "ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200702175022",
+  "entityTableName": "bon_livestock_matrilineality",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["bonGateway", "bonLivestockService"],
+  "microserviceName": "bonLivestockService"
+}

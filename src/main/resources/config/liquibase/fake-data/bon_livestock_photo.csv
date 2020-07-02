@@ -1,0 +1,11 @@
+id;image;image_content_type;caption;height;width;taken;visibility;cattle_id
+1;../fake-data/blob/hipster.png;image/png;ADP Mountain Metal;96762;29391;2020-07-01T19:21:09;ROLE_ANONYMOUS;1
+2;../fake-data/blob/hipster.png;image/png;Direct Security Ergonomic;52434;48877;2020-07-02T15:05:17;ROLE_ADMIN;2
+3;../fake-data/blob/hipster.png;image/png;Macao Security;17002;19520;2020-07-02T02:42:07;ROLE_ADMIN;3
+4;../fake-data/blob/hipster.png;image/png;Auto Loan Account Tasty;47332;56390;2020-07-01T18:59:37;ROLE_ADMIN;4
+5;../fake-data/blob/hipster.png;image/png;Gorgeous Hat Brand;93207;59346;2020-07-02T01:11:30;ROLE_USER;5
+6;../fake-data/blob/hipster.png;image/png;users olive;29721;16357;2020-07-02T00:17:51;ROLE_ADMIN;6
+7;../fake-data/blob/hipster.png;image/png;Harbor;65671;69447;2020-07-02T14:18:29;ROLE_USER;7
+8;../fake-data/blob/hipster.png;image/png;bottom-line payment West Virginia;97852;13247;2020-07-02T10:17:17;ROLE_ANONYMOUS;8
+9;../fake-data/blob/hipster.png;image/png;Electronics Fantastic Steel Fish;34880;45917;2020-07-02T09:36:43;ROLE_ADMIN;9
+10;../fake-data/blob/hipster.png;image/png;panel;40241;42091;2020-07-02T09:17:36;ROLE_ADMIN;10

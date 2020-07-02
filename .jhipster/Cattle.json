@@ -1,0 +1,74 @@
+{
+  "name": "Cattle",
+  "fields": [
+    {
+      "fieldName": "earTagId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "required", "unique"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "127"
+    },
+    {
+      "fieldName": "visibility",
+      "fieldType": "UserRole",
+      "fieldValues": "ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"
+    },
+    {
+      "fieldName": "upForSale",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "showBlup",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "alert",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "storyHandle",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "photo",
+      "otherEntityRelationshipName": "cattle",
+      "relationshipName": "photo"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "note",
+      "otherEntityRelationshipName": "cattle",
+      "relationshipName": "note"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "matrilineality",
+      "otherEntityRelationshipName": "cattle",
+      "relationshipName": "matrilineality",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20200702175122",
+  "entityTableName": "bon_livestock_cattle",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["bonGateway", "bonLivestockService"],
+  "microserviceName": "bonLivestockService"
+}
