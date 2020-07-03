@@ -1,11 +1,13 @@
 id;familyname;ear_tag_id;name;country;description;cattle_name_regex_pattern;patri_id;patri_name;patri_country;polled;story_handle;visibility
-1;sensor Buckinghamshire program;93444;Stream invoice JBOD;Saint ;Soft Generic Turkey;Croatian Kuna Security;91160;North Dakota innovative installation;Hat Vi;false;maximized 1080p Coordinator;ROLE_ADMIN
-2;Swedish Krona Personal Loan Account;87810;lavender bus;Cocos ;system Personal Loan Account backing up;Sports connect;88405;Computers aggregate Face to face;progra;true;Well Fall hierarchy;ROLE_USER
-3;Chair service-desk 3rd generation;29093;high-level Technician Industrial;Belize;Malaysian Ringgit Rustic Frozen Computer;Optional Concrete bypassing;37680;Berkshire;compre;false;Rue;ROLE_USER
-4;Saudi Riyal value-added;49446;scale connecting implementation;Uzbeki;Unbranded Frozen Ball Handmade Avon;e-services;66448;Small Metal Chair;Office;true;Generic strategic salmon;ROLE_USER
-5;Handcrafted Soft Cheese Principal;58372;Self-enabling;Latvia;interfaces strategic Consultant;Sports;33045;Enterprise-wide;action;false;Centers Western Sahara;ROLE_ANONYMOUS
-6;Unbranded Greece disintermediate;36519;Borders;Faroe ;Dynamic applications Designer;function Ergonomic Steel Towels;3141;Steel bluetooth Universal;intera;false;transmitting sky blue;ROLE_ANONYMOUS
-7;secondary;92572;paradigms parsing Wall;Nauru;GB;AI invoice multi-byte;53160;Credit Card Account structure Metal;COM Il;true;Gorgeous Via;ROLE_ANONYMOUS
-8;Bike;17913;copying synergize connect;Guatem;override Intranet optical;value-added;99408;Svalbard & Jan Mayen Islands Lithuania Practical;conver;true;calculating;ROLE_ADMIN
-9;alarm;25562;clicks-and-mortar Customer;Kiriba;Puerto Rico New Jersey leverage;installation;96348;Executive Summit;Buckin;false;Maryland Table;ROLE_ANONYMOUS
-10;Refined bluetooth;35709;Money Market Account calculate;Reunio;SDR calculating;maroon;66275;violet global;hack P;true;Checking Account archive;ROLE_USER
+1;Uppee;200;Uppee;FR;todo;(\bUppee\b);100;Bull 100;FR;false;UppeeStory;ROLE_ANONYMOUS
+2;Europe;210;Europe;FR;todo;(\bEurope\b);101;Bull 101;FR;true;EuropeStory;ROLE_ANONYMOUS
+3;Eure;220;Eure;FR;todo;(\bEure\b);102;Bull 102;FR;false;EureStory;ROLE_ANONYMOUS
+4;Eglantine;230;Eglantine;FR;todo;(\bEglantine\b|\bJessika\b);103;Bull 103;FR;true;EglantineStory;ROLE_ANONYMOUS
+5;Etincelle;240;Etincelle;FR;todo;(\bEtincelle\b);104;Bull 104;FR;false;EtincelleStory;ROLE_ANONYMOUS
+6;Epargne;250;Epargne;FR;todo;(\bEpargne\b);105;Bull 105;FR;false;EpargneStory;ROLE_ANONYMOUS
+7;Fanny;260;Fanny;FR;todo;(\bFanny\b);106;Bull 106;FR;true;FannyStory;ROLE_ANONYMOUS
+8;Esther;270;Esther;FR;todo;(\bEsther\b);107;Bull 107;FR;true;EstherStory;ROLE_ANONYMOUS
+9;Estafette;280;Estafette;FR;todo;(\bEstafette\b);108;Bull 108;FR;false;EstafetteStory;ROLE_ANONYMOUS
+10;Emeraude;290;Emeraude;FR;todo;(\bEmeraude\b);109;Bull 109;FR;true;EmeraudeStory;ROLE_ANONYMOUS
+11;Elyssee;300;Elyssee;FR;todo;(\bElyssee\b);110;Bull 110;FR;true;ElysseeStory;ROLE_ANONYMOUS
+12;Delphine;310;Delphine;FR;todo;(\bDelphine\b);111;Bull 111;FR;true;DelphineStory;ROLE_ANONYMOUS
