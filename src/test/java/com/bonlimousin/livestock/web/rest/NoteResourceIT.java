@@ -1,13 +1,20 @@
 package com.bonlimousin.livestock.web.rest;
 
-import com.bonlimousin.livestock.BonLivestockServiceApp;
-import com.bonlimousin.livestock.domain.NoteEntity;
-import com.bonlimousin.livestock.domain.PastureEntity;
-import com.bonlimousin.livestock.domain.CattleEntity;
-import com.bonlimousin.livestock.repository.NoteRepository;
-import com.bonlimousin.livestock.service.NoteService;
-import com.bonlimousin.livestock.service.dto.NoteCriteria;
-import com.bonlimousin.livestock.service.NoteQueryService;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,17 +25,15 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import com.bonlimousin.livestock.BonLivestockServiceApp;
+import com.bonlimousin.livestock.domain.CattleEntity;
+import com.bonlimousin.livestock.domain.NoteEntity;
+import com.bonlimousin.livestock.domain.PastureEntity;
 import com.bonlimousin.livestock.domain.enumeration.NoteCategory;
+import com.bonlimousin.livestock.repository.NoteRepository;
+import com.bonlimousin.livestock.service.NoteQueryService;
+import com.bonlimousin.livestock.service.NoteService;
 /**
  * Integration tests for the {@link NoteResource} REST controller.
  */
@@ -77,12 +82,12 @@ public class NoteResourceIT {
             .actualDate(DEFAULT_ACTUAL_DATE);
         // Add required entity
         CattleEntity cattle;
-        if (TestUtil.findAll(em, Cattle.class).isEmpty()) {
+        if (TestUtil.findAll(em, CattleEntity.class).isEmpty()) {
             cattle = CattleResourceIT.createEntity(em);
             em.persist(cattle);
             em.flush();
         } else {
-            cattle = TestUtil.findAll(em, Cattle.class).get(0);
+            cattle = TestUtil.findAll(em, CattleEntity.class).get(0);
         }
         noteEntity.setCattle(cattle);
         return noteEntity;
@@ -100,12 +105,12 @@ public class NoteResourceIT {
             .actualDate(UPDATED_ACTUAL_DATE);
         // Add required entity
         CattleEntity cattle;
-        if (TestUtil.findAll(em, Cattle.class).isEmpty()) {
+        if (TestUtil.findAll(em, CattleEntity.class).isEmpty()) {
             cattle = CattleResourceIT.createUpdatedEntity(em);
             em.persist(cattle);
             em.flush();
         } else {
-            cattle = TestUtil.findAll(em, Cattle.class).get(0);
+            cattle = TestUtil.findAll(em, CattleEntity.class).get(0);
         }
         noteEntity.setCattle(cattle);
         return noteEntity;

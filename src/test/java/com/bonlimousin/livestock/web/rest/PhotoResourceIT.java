@@ -1,12 +1,20 @@
 package com.bonlimousin.livestock.web.rest;
 
-import com.bonlimousin.livestock.BonLivestockServiceApp;
-import com.bonlimousin.livestock.domain.PhotoEntity;
-import com.bonlimousin.livestock.domain.CattleEntity;
-import com.bonlimousin.livestock.repository.PhotoRepository;
-import com.bonlimousin.livestock.service.PhotoService;
-import com.bonlimousin.livestock.service.dto.PhotoCriteria;
-import com.bonlimousin.livestock.service.PhotoQueryService;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,17 +26,14 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
-import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import com.bonlimousin.livestock.BonLivestockServiceApp;
+import com.bonlimousin.livestock.domain.CattleEntity;
+import com.bonlimousin.livestock.domain.PhotoEntity;
 import com.bonlimousin.livestock.domain.enumeration.UserRole;
+import com.bonlimousin.livestock.repository.PhotoRepository;
+import com.bonlimousin.livestock.service.PhotoQueryService;
+import com.bonlimousin.livestock.service.PhotoService;
 /**
  * Integration tests for the {@link PhotoResource} REST controller.
  */
@@ -93,12 +98,12 @@ public class PhotoResourceIT {
             .visibility(DEFAULT_VISIBILITY);
         // Add required entity
         CattleEntity cattle;
-        if (TestUtil.findAll(em, Cattle.class).isEmpty()) {
+        if (TestUtil.findAll(em, CattleEntity.class).isEmpty()) {
             cattle = CattleResourceIT.createEntity(em);
             em.persist(cattle);
             em.flush();
         } else {
-            cattle = TestUtil.findAll(em, Cattle.class).get(0);
+            cattle = TestUtil.findAll(em, CattleEntity.class).get(0);
         }
         photoEntity.setCattle(cattle);
         return photoEntity;
@@ -120,12 +125,12 @@ public class PhotoResourceIT {
             .visibility(UPDATED_VISIBILITY);
         // Add required entity
         CattleEntity cattle;
-        if (TestUtil.findAll(em, Cattle.class).isEmpty()) {
+        if (TestUtil.findAll(em, CattleEntity.class).isEmpty()) {
             cattle = CattleResourceIT.createUpdatedEntity(em);
             em.persist(cattle);
             em.flush();
         } else {
-            cattle = TestUtil.findAll(em, Cattle.class).get(0);
+            cattle = TestUtil.findAll(em, CattleEntity.class).get(0);
         }
         photoEntity.setCattle(cattle);
         return photoEntity;
