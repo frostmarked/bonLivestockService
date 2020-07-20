@@ -1,0 +1,61 @@
+{
+  "name": "Photo",
+  "fields": [
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "caption",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "140"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "width",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "taken",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "visibility",
+      "fieldType": "UserRole",
+      "fieldValues": "ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cattle",
+      "otherEntityRelationshipName": "photo",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cattle",
+      "otherEntityField": "earTagId"
+    }
+  ],
+  "changelogDate": "20200702175422",
+  "entityTableName": "bon_livestock_photo",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["bonGateway", "bonLivestockService"],
+  "microserviceName": "bonLivestockService"
+}

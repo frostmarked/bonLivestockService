@@ -1,0 +1,50 @@
+{
+  "name": "Note",
+  "fields": [
+    {
+      "fieldName": "category",
+      "fieldType": "NoteCategory",
+      "fieldValues": "GENERAL,TREATMENT,HOOF_CARE,DEHORNING,PASTURE_CHANGE,PASTURE_PLANNED,WEIGHT,WEIGHING0,WEIGHING200,WEIGHING365,ALERT,TEMPER,ESTRUS,INSEMINATION",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "actualDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pasture",
+      "otherEntityRelationshipName": "note",
+      "relationshipName": "pasture",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cattle",
+      "otherEntityRelationshipName": "note",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cattle",
+      "otherEntityField": "earTagId"
+    }
+  ],
+  "changelogDate": "20200702175222",
+  "entityTableName": "bon_livestock_note",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["bonGateway", "bonLivestockService"],
+  "microserviceName": "bonLivestockService"
+}
