@@ -5,7 +5,7 @@
 
     <groupId>com.bonlimousin.livestock</groupId>
     <artifactId>bon-livestock-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}${sha1}${changelist}</version>
     <packaging>jar</packaging>
     <name>Bon Livestock Service</name>
 
@@ -21,7 +21,10 @@
 
     <properties>
         <!-- Build properties -->
-        <maven.version>3.3.9</maven.version>
+        <revision>0.0.1</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <sha1/>
+        <maven.version>3.6.3</maven.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -625,6 +628,10 @@
                         </from>
                         <to>
                             <image>bonlivestockservice:latest</image>
+                            <tags>
+                                <tag>latest</tag>
+                                <tag>${project.version}</tag>
+                            </tags>
                         </to>
                         <container>
                             <entrypoint>
