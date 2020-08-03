@@ -135,6 +135,7 @@ public class MatrilinealityResourceIT {
 
     @BeforeEach
     public void initTest() {
+    	matrilinealityRepository.deleteAll();
         matrilinealityEntity = createEntity(em);
     }
 
