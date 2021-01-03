@@ -18,13 +18,13 @@ public class MatrilinealityRegexStepDefs extends StepDefs {
 
 	private List<MatrilinealityEntity> matris;
 	private List<MatrilinealityEntity> matchedMatris;
-	
+
 	@Autowired
 	private MatrilinealityRepository matrilinealityRepository;
-	
+
 	@Given("matrilinealities are setup")
 	public void a_few_matrilinealities_are_setup() {
-		matris = matrilinealityRepository.findAll();		
+		matris = matrilinealityRepository.findAll();
 	}
 
 	@When("I test the cow name {string}")
@@ -40,6 +40,6 @@ public class MatrilinealityRegexStepDefs extends StepDefs {
 			Assert.assertTrue(!matchedMatris.isEmpty());
 			Assert.assertEquals(1, matchedMatris.size());
 			Assert.assertEquals(string, matchedMatris.get(0).getFamilyname());
-		}		
+		}
 	}
 }
