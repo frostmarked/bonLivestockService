@@ -79,9 +79,9 @@ public class BovineEntityChangeConsumer {
 		ce.setAlert(true);
 		ce.setShowBlup(false);
 		ce.setUpForSale(false);
-		if(!Optional.ofNullable(vo.getEntityValue().get(BovineField.BOVINE_STATUS.fieldName()))
+		if(Optional.ofNullable(vo.getEntityValue().get(BovineField.BOVINE_STATUS.fieldName()))
 				.map(Object::toString)
-				.filter("ON_FARM"::equalsIgnoreCase).isEmpty()) {
+				.filter("ON_FARM"::equalsIgnoreCase).isPresent()) {
 			ce.setVisibility(UserRole.ROLE_ANONYMOUS);
 		} else {
 			ce.setVisibility(UserRole.ROLE_ADMIN);

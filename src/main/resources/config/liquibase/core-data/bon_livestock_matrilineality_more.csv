@@ -1,0 +1,7 @@
+id;familyname;ear_tag_id;name;country;description;cattle_name_regex_pattern;patri_id;patri_name;patri_country;polled;story_handle;visibility
+13;Klara;18;Klara;se;todo;^(.*?((?i)(\\bKlara\\b|\\bKlary\\b))[^$]*)$;100;Polled Justice;ca;false;KlaraStory;ROLE_ADMIN
+14;Hellene;505;Hellene;dk;todo;^(.*?((?i)(\\bHenny\\b|\\bHellene\\b))[^$]*)$;100;Ideal;fr;false;HelleneStory;ROLE_ADMIN
+15;Flute;104;Flute;fr;todo;^(.*?((?i)(\\bFlute\\b|\\bCeris\\b))[^$]*)$;100;Vantard;fr;false;FluteStory;ROLE_ADMIN
+16;Etoile;10;Etoile;fr;todo;^(.*?((?i)(\\bEtoile\\b|\\bMimell\\b))[^$]*)$;100;Cacao;se;false;EtoileStory;ROLE_ADMIN
+17;Palette;234;Palette;fr;todo;^(.*?((?i)(\\bPalette\\b))[^$]*)$;100;Pouf;fr;false;PaletteStory;ROLE_ADMIN
+18;Gamine;634;Gamine;fr;todo;^(.*?((?i)(\\bGamine\\b|\\bNelly\\b))[^$]*)$;100;Elu;fr;false;GamineStory;ROLE_ADMIN

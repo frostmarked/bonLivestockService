@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20210103172200-1-data" author="jofr">
+        <!-- 988 Uppee -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="988" />
+            <column name="patri_name" value="Liseron" />
+            <column name="patri_country" value="fr" />
+            <where>id = '1'</where>
+        </update>
+        <!-- 1 Europe -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="1" />
+            <column name="patri_name" value="Pompon" />
+            <column name="patri_country" value="fr" />
+            <where>id = '2'</where>
+        </update>
+        <!-- 8 Eure -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="8" />
+            <column name="patri_name" value="Gitan" />
+            <column name="patri_country" value="fr" />
+            <where>id = '3'</where>
+        </update>
+        <!-- 2 Eglantine -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="2" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bEglantine\b|\bJessika\b|\bJesika\b))[^$]*)$" />
+            <column name="patri_name" value="Capucin" />
+            <column name="patri_country" value="fr" />
+            <where>id = '4'</where>
+        </update>
+        <!-- 3 Etincelle -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="3" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bEtincelle\b|\bMadame\b))[^$]*)$" />
+            <column name="patri_name" value="Nuit De Bal" />
+            <column name="patri_country" value="fr" />
+            <where>id = '5'</where>
+        </update>
+        <!-- 49 Epargne -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="49" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bEpargne\b|\bEvita\b))[^$]*)$" />
+            <column name="patri_name" value="Belphegor" />
+            <column name="patri_country" value="fr" />
+            <where>id = '6'</where>
+        </update>
+        <!-- 98 Fanny -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="98" />
+            <column name="patri_name" value="Brock" />
+            <column name="patri_country" value="ca" />
+            <where>id = '7'</where>
+        </update>
+        <!-- 6 Esther -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="6" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bEsther\b|\bMinerve\b|\bMinerv\b))[^$]*)$" />
+            <column name="patri_name" value="Etendord" />
+            <column name="patri_country" value="fr" />
+            <where>id = '8'</where>
+        </update>
+        <!-- 52 Estafette -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="52" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bEstafette\b|\bElle\b))[^$]*)$" />
+            <column name="patri_name" value="Nuit De Bal" />
+            <column name="patri_country" value="fr" />
+            <where>id = '9'</where>
+        </update>
+        <!-- 9 Emeraude -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="9" />
+            <column name="patri_name" value="Rossignol" />
+            <column name="patri_country" value="fr" />
+            <where>id = '10'</where>
+        </update>
+        <!-- 7 Elyssee -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="7" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bElyssee\b|\bElysee\b))[^$]*)$" />
+            <column name="patri_name" value="Gitan" />
+            <column name="patri_country" value="fr" />
+            <where>id = '11'</where>
+        </update>
+        <!-- 30 Delphine -->
+        <update tableName="bon_livestock_matrilineality">
+            <column name="ear_tag_id" value="30" />
+            <column name="cattle_name_regex_pattern" value="^(.*?((?i)(\bDelphine\b|\bEscall\b))[^$]*)$" />
+            <column name="patri_name" value="Pinokkio" />
+            <column name="patri_country" value="fr" />
+            <where>id = '12'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="20210103172200-2-data" author="jofr" context="core">
+        <loadData
+            file="config/liquibase/core-data/bon_livestock_matrilineality_more.csv"
+            separator=";"
+            tableName="bon_livestock_matrilineality">
+            <column name="id" type="numeric"/>
+            <column name="familyname" type="string"/>
+            <column name="ear_tag_id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="country" type="string"/>
+            <column name="description" type="string"/>
+            <column name="cattle_name_regex_pattern" type="string"/>
+            <column name="patri_id" type="numeric"/>
+            <column name="patri_name" type="string"/>
+            <column name="patri_country" type="string"/>
+            <column name="polled" type="boolean"/>
+            <column name="story_handle" type="string"/>
+            <column name="visibility" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
