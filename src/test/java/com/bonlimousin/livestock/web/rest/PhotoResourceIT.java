@@ -215,14 +215,15 @@ public class PhotoResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(photoEntity.getId().intValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            // dummy image on list
+            .andExpect(jsonPath("$.[*].image").value(hasItem(PhotoQueryService.DEFAULT_LIST_IMAGE_BASE64)))
             .andExpect(jsonPath("$.[*].caption").value(hasItem(DEFAULT_CAPTION)))
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH)))
             .andExpect(jsonPath("$.[*].taken").value(hasItem(DEFAULT_TAKEN.toString())))
             .andExpect(jsonPath("$.[*].visibility").value(hasItem(DEFAULT_VISIBILITY.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getPhoto() throws Exception {
@@ -679,7 +680,8 @@ public class PhotoResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(photoEntity.getId().intValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            // default list image
+            .andExpect(jsonPath("$.[*].image").value(hasItem(PhotoQueryService.DEFAULT_LIST_IMAGE_BASE64)))
             .andExpect(jsonPath("$.[*].caption").value(hasItem(DEFAULT_CAPTION)))
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH)))
