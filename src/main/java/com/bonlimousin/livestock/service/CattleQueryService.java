@@ -106,10 +106,6 @@ public class CattleQueryService extends QueryService<CattleEntity> {
             if (criteria.getStoryHandle() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getStoryHandle(), CattleEntity_.storyHandle));
             }
-            if (criteria.getNoteId() != null) {
-                specification = specification.and(buildSpecification(criteria.getNoteId(),
-                    root -> root.join(CattleEntity_.notes, JoinType.LEFT).get(NoteEntity_.id)));
-            }
             if (criteria.getMatrilinealityId() != null) {
                 specification = specification.and(buildSpecification(criteria.getMatrilinealityId(),
                     root -> root.join(CattleEntity_.matrilineality, JoinType.LEFT).get(MatrilinealityEntity_.id)));

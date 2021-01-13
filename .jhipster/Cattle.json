@@ -40,12 +40,6 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "note",
-      "otherEntityRelationshipName": "cattle",
-      "relationshipName": "note"
-    },
-    {
       "relationshipType": "many-to-one",
       "otherEntityName": "matrilineality",
       "otherEntityRelationshipName": "cattle",

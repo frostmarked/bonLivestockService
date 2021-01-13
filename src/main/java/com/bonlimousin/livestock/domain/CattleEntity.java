@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.bonlimousin.livestock.domain.enumeration.UserRole;
 
@@ -56,10 +54,6 @@ public class CattleEntity implements Serializable {
 
     @Column(name = "story_handle")
     private String storyHandle;
-
-    @OneToMany(mappedBy = "cattle")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<NoteEntity> notes = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "cattles", allowSetters = true)
@@ -163,31 +157,6 @@ public class CattleEntity implements Serializable {
 
     public void setStoryHandle(String storyHandle) {
         this.storyHandle = storyHandle;
-    }
-
-    public Set<NoteEntity> getNotes() {
-        return notes;
-    }
-
-    public CattleEntity notes(Set<NoteEntity> notes) {
-        this.notes = notes;
-        return this;
-    }
-
-    public CattleEntity addNote(NoteEntity note) {
-        this.notes.add(note);
-        note.setCattle(this);
-        return this;
-    }
-
-    public CattleEntity removeNote(NoteEntity note) {
-        this.notes.remove(note);
-        note.setCattle(null);
-        return this;
-    }
-
-    public void setNotes(Set<NoteEntity> notes) {
-        this.notes = notes;
     }
 
     public MatrilinealityEntity getMatrilineality() {
