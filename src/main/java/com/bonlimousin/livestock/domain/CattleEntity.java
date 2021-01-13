@@ -59,10 +59,6 @@ public class CattleEntity implements Serializable {
 
     @OneToMany(mappedBy = "cattle")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<PhotoEntity> photos = new HashSet<>();
-
-    @OneToMany(mappedBy = "cattle")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<NoteEntity> notes = new HashSet<>();
 
     @ManyToOne
@@ -167,31 +163,6 @@ public class CattleEntity implements Serializable {
 
     public void setStoryHandle(String storyHandle) {
         this.storyHandle = storyHandle;
-    }
-
-    public Set<PhotoEntity> getPhotos() {
-        return photos;
-    }
-
-    public CattleEntity photos(Set<PhotoEntity> photos) {
-        this.photos = photos;
-        return this;
-    }
-
-    public CattleEntity addPhoto(PhotoEntity photo) {
-        this.photos.add(photo);
-        photo.setCattle(this);
-        return this;
-    }
-
-    public CattleEntity removePhoto(PhotoEntity photo) {
-        this.photos.remove(photo);
-        photo.setCattle(null);
-        return this;
-    }
-
-    public void setPhotos(Set<PhotoEntity> photos) {
-        this.photos = photos;
     }
 
     public Set<NoteEntity> getNotes() {
