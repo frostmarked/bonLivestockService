@@ -27,8 +27,9 @@ public class PhotoEntity implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    
+
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "image", nullable = false)
     private byte[] image;
 

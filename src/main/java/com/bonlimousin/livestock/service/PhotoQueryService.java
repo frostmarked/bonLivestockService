@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.criteria.JoinType;
 
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import com.bonlimousin.livestock.domain.PhotoEntity;
 import com.bonlimousin.livestock.domain.*; // for static metamodels
 import com.bonlimousin.livestock.repository.PhotoRepository;
 import com.bonlimousin.livestock.service.dto.PhotoCriteria;
+import org.springframework.util.Base64Utils;
 
 /**
  * Service for executing complex queries for {@link PhotoEntity} entities in the database.
@@ -30,6 +32,11 @@ import com.bonlimousin.livestock.service.dto.PhotoCriteria;
 public class PhotoQueryService extends QueryService<PhotoEntity> {
 
     private final Logger log = LoggerFactory.getLogger(PhotoQueryService.class);
+
+    // transparent pixel
+    public static final String DEFAULT_LIST_IMAGE_BASE64 =
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==";
+    public static final byte[] DEFAULT_LIST_IMAGE = Base64Utils.decodeFromString(DEFAULT_LIST_IMAGE_BASE64);
 
     private final PhotoRepository photoRepository;
 
@@ -46,7 +53,12 @@ public class PhotoQueryService extends QueryService<PhotoEntity> {
     public List<PhotoEntity> findByCriteria(PhotoCriteria criteria) {
         log.debug("find by criteria : {}", criteria);
         final Specification<PhotoEntity> specification = createSpecification(criteria);
-        return photoRepository.findAll(specification);
+        List<PhotoEntity> list = photoRepository.findAll(specification);
+        list.forEach(pe -> {
+            Hibernate.unproxy(pe);
+            pe.setImage(DEFAULT_LIST_IMAGE);
+        });
+        return list;
     }
 
     /**
@@ -59,7 +71,12 @@ public class PhotoQueryService extends QueryService<PhotoEntity> {
     public Page<PhotoEntity> findByCriteria(PhotoCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specification<PhotoEntity> specification = createSpecification(criteria);
-        return photoRepository.findAll(specification, page);
+        Page<PhotoEntity> p = photoRepository.findAll(specification, page);
+        p.getContent().forEach(pe -> {
+            Hibernate.unproxy(pe);
+            pe.setImage(DEFAULT_LIST_IMAGE);
+        });
+        return p;
     }
 
     /**

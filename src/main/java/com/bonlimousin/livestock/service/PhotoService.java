@@ -2,6 +2,7 @@ package com.bonlimousin.livestock.service;
 
 import com.bonlimousin.livestock.domain.PhotoEntity;
 import com.bonlimousin.livestock.repository.PhotoRepository;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +48,12 @@ public class PhotoService {
     @Transactional(readOnly = true)
     public Page<PhotoEntity> findAll(Pageable pageable) {
         log.debug("Request to get all Photos");
-        return photoRepository.findAll(pageable);
+        Page<PhotoEntity> p =  photoRepository.findAll(pageable);
+        p.getContent().forEach(pe -> {
+            Hibernate.unproxy(pe);
+            pe.setImage(PhotoQueryService.DEFAULT_LIST_IMAGE);
+        });
+        return p;
     }
 
 
