@@ -59,8 +59,6 @@ public class CattleCriteria implements Serializable, Criteria {
 
     private StringFilter storyHandle;
 
-    private LongFilter noteId;
-
     private LongFilter matrilinealityId;
 
     public CattleCriteria() {
@@ -75,7 +73,6 @@ public class CattleCriteria implements Serializable, Criteria {
         this.showBlup = other.showBlup == null ? null : other.showBlup.copy();
         this.alert = other.alert == null ? null : other.alert.copy();
         this.storyHandle = other.storyHandle == null ? null : other.storyHandle.copy();
-        this.noteId = other.noteId == null ? null : other.noteId.copy();
         this.matrilinealityId = other.matrilinealityId == null ? null : other.matrilinealityId.copy();
     }
 
@@ -148,14 +145,6 @@ public class CattleCriteria implements Serializable, Criteria {
         this.storyHandle = storyHandle;
     }
 
-    public LongFilter getNoteId() {
-        return noteId;
-    }
-
-    public void setNoteId(LongFilter noteId) {
-        this.noteId = noteId;
-    }
-
     public LongFilter getMatrilinealityId() {
         return matrilinealityId;
     }
@@ -183,7 +172,6 @@ public class CattleCriteria implements Serializable, Criteria {
             Objects.equals(showBlup, that.showBlup) &&
             Objects.equals(alert, that.alert) &&
             Objects.equals(storyHandle, that.storyHandle) &&
-            Objects.equals(noteId, that.noteId) &&
             Objects.equals(matrilinealityId, that.matrilinealityId);
     }
 
@@ -198,7 +186,6 @@ public class CattleCriteria implements Serializable, Criteria {
         showBlup,
         alert,
         storyHandle,
-        noteId,
         matrilinealityId
         );
     }
@@ -215,7 +202,6 @@ public class CattleCriteria implements Serializable, Criteria {
                 (showBlup != null ? "showBlup=" + showBlup + ", " : "") +
                 (alert != null ? "alert=" + alert + ", " : "") +
                 (storyHandle != null ? "storyHandle=" + storyHandle + ", " : "") +
-                (noteId != null ? "noteId=" + noteId + ", " : "") +
                 (matrilinealityId != null ? "matrilinealityId=" + matrilinealityId + ", " : "") +
             "}";
     }
