@@ -2,7 +2,6 @@ package com.bonlimousin.livestock.web.rest;
 
 import com.bonlimousin.livestock.BonLivestockServiceApp;
 import com.bonlimousin.livestock.domain.CattleEntity;
-import com.bonlimousin.livestock.domain.PhotoEntity;
 import com.bonlimousin.livestock.domain.NoteEntity;
 import com.bonlimousin.livestock.domain.MatrilinealityEntity;
 import com.bonlimousin.livestock.repository.CattleRepository;
@@ -779,26 +778,6 @@ public class CattleResourceIT {
 
         // Get all the cattleList where storyHandle does not contain UPDATED_STORY_HANDLE
         defaultCattleShouldBeFound("storyHandle.doesNotContain=" + UPDATED_STORY_HANDLE);
-    }
-
-
-    @Test
-    @Transactional
-    public void getAllCattlesByPhotoIsEqualToSomething() throws Exception {
-        // Initialize the database
-        cattleRepository.saveAndFlush(cattleEntity);
-        PhotoEntity photo = PhotoResourceIT.createEntity(em);
-        em.persist(photo);
-        em.flush();
-        cattleEntity.addPhoto(photo);
-        cattleRepository.saveAndFlush(cattleEntity);
-        Long photoId = photo.getId();
-
-        // Get all the cattleList where photo equals to photoId
-        defaultCattleShouldBeFound("photoId.equals=" + photoId);
-
-        // Get all the cattleList where photo equals to photoId + 1
-        defaultCattleShouldNotBeFound("photoId.equals=" + (photoId + 1));
     }
 
 

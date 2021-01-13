@@ -41,12 +41,6 @@
   "relationships": [
     {
       "relationshipType": "one-to-many",
-      "otherEntityName": "photo",
-      "otherEntityRelationshipName": "cattle",
-      "relationshipName": "photo"
-    },
-    {
-      "relationshipType": "one-to-many",
       "otherEntityName": "note",
       "otherEntityRelationshipName": "cattle",
       "relationshipName": "note"
