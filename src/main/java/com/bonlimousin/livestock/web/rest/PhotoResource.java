@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -62,10 +63,14 @@ public class PhotoResource {
         if (photoEntity.getId() != null) {
             throw new BadRequestAlertException("A new photo cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        PhotoEntity result = photoService.save(photoEntity);
-        return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+        try {
+            PhotoEntity result = photoService.save(photoEntity);
+            return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
+        } catch (IOException e) {
+            throw new BadRequestAlertException("Can not extract dimensions from photo", ENTITY_NAME, "imagecorrupt");
+        }
     }
 
     /**
@@ -83,10 +88,14 @@ public class PhotoResource {
         if (photoEntity.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        PhotoEntity result = photoService.save(photoEntity);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, photoEntity.getId().toString()))
-            .body(result);
+        try {
+            PhotoEntity result = photoService.save(photoEntity);
+            return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, photoEntity.getId().toString()))
+                .body(result);
+        } catch (IOException e) {
+            throw new BadRequestAlertException("Can not extract dimensions from photo", ENTITY_NAME, "imagecorrupt");
+        }
     }
 
     /**

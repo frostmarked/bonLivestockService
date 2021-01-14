@@ -11,6 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 
 /**
@@ -34,8 +39,12 @@ public class PhotoService {
      * @param photoEntity the entity to save.
      * @return the persisted entity.
      */
-    public PhotoEntity save(PhotoEntity photoEntity) {
+    public PhotoEntity save(PhotoEntity photoEntity) throws IOException {
         log.debug("Request to save Photo : {}", photoEntity);
+        try(InputStream is = new ByteArrayInputStream(photoEntity.getImage())) {
+            BufferedImage bi = ImageIO.read(is);
+            photoEntity.width(bi.getWidth()).height(bi.getHeight());
+        }
         return photoRepository.save(photoEntity);
     }
 

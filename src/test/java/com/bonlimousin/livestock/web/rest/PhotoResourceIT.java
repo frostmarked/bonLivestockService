@@ -42,21 +42,25 @@ import com.bonlimousin.livestock.service.PhotoService;
 @WithMockUser
 public class PhotoResourceIT {
 
-    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(1, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
+    // 2x2
+    private static final byte[] DEFAULT_IMAGE = Base64Utils.decodeFromString(
+        "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEklEQVR42mP8z/C/ngEIGGEMADdsBP3lTYQdAAAAAElFTkSuQmCC");
+    // 4x4
+    private static final byte[] UPDATED_IMAGE = Base64Utils.decodeFromString(
+        "iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAE0lEQVR42mP8z/C/ngEJMJIuAACQHwn5Nb9RUAAAAABJRU5ErkJggg==");
+    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg"; // its ok
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
     private static final String DEFAULT_CAPTION = "AAAAAAAAAA";
     private static final String UPDATED_CAPTION = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_HEIGHT = 0;
-    private static final Integer UPDATED_HEIGHT = 1;
-    private static final Integer SMALLER_HEIGHT = 0 - 1;
+    private static final Integer DEFAULT_HEIGHT = 2;
+    private static final Integer UPDATED_HEIGHT = 4;
+    private static final Integer SMALLER_HEIGHT = 2 - 1;
 
-    private static final Integer DEFAULT_WIDTH = 0;
-    private static final Integer UPDATED_WIDTH = 1;
-    private static final Integer SMALLER_WIDTH = 0 - 1;
+    private static final Integer DEFAULT_WIDTH = 2;
+    private static final Integer UPDATED_WIDTH = 4;
+    private static final Integer SMALLER_WIDTH = 2 - 1;
 
     private static final Instant DEFAULT_TAKEN = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_TAKEN = Instant.now().truncatedTo(ChronoUnit.MILLIS);
