@@ -75,7 +75,12 @@ public class PhotoService {
     @Transactional(readOnly = true)
     public Optional<PhotoEntity> findOne(Long id) {
         log.debug("Request to get Photo : {}", id);
-        return photoRepository.findById(id);
+        Optional<PhotoEntity> opt = photoRepository.findById(id);
+        if(opt.isPresent() && !Hibernate.isPropertyInitialized(opt.get(), "image")) {
+            // unnecessary code but makes it obvious that lob is being fetched
+            Hibernate.initialize(opt.get().getImage());
+        }
+        return opt;
     }
 
     /**
